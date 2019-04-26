@@ -33,6 +33,7 @@ Print the answer as part of a message:
  <list of codes>
 The list of codes should be print out one per line in lexicographic order with no duplicates.
 
+
 Part B: What percentage of calls from fixed lines in Bangalore are made
 to fixed lines also in Bangalore? In other words, of all the calls made
 from a number starting with "(080)", what percentage of these calls
@@ -43,3 +44,40 @@ Print the answer as a part of a message::
 to other fixed lines in Bangalore."
 The percentage should have 2 decimal digits
 """
+
+
+def get_code(call):
+    if call.startswith("("):
+        return call.split(")")[0] + ")"
+    elif call[0] in ["7", "8", "9"]:
+        return call[0:4]
+    elif call.startswith("140"):
+        return "140"
+    else:
+        return None
+
+
+codes = {}
+print("The numbers called by people in Bangalore have codes:")
+for call in calls:
+    incoming_call = call[0]
+    if incoming_call.startswith("(080)"):
+        answering_call = call[1]
+        code = get_code(answering_call)
+        if code is not None and code not in codes:
+            print(code)
+            codes[code] = 0
+
+
+calls_from_bangalore_count = 0
+calls_to_bangalore_count = 0
+for call in calls:
+    incoming_call = call[0]
+    if incoming_call.startswith("(080)"):
+        calls_from_bangalore_count += 1
+        answering_call = call[1]
+        if answering_call.startswith("(080)"):
+            calls_to_bangalore_count += 1
+
+print("{0:.2f} percent of calls from fixed lines in Bangalore are calls to other fixed lines in Bangalore.".format(
+    calls_to_bangalore_count * 100 / calls_from_bangalore_count))

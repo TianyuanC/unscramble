@@ -1,3 +1,21 @@
-Task0: O(1)
-Task1: O(n)
-Task2: O(n)
+Task0: 
+O(1) 
+To access an array with a given index, first or last, the access time should be constant
+
+Task1: 
+O(n) 
+We need to go through each texts and calls once, and thus, we have the O(n) runtime
+
+Task2: 
+O(n) 
+Similar to the scenario above, we need to go through each call once
+
+Task3: 
+O(n) 
+In order to generate the final result, we need to go through each call once
+
+Task4: 
+Worst case O(n^2) if the dict hash algorithm is implemented horribly... 
+first of all we need to loop through each item to build the whitelist,
+and then again, we need to go through each outgoing calls to check if they start with 140 or not in the whitelist.
+If the whitelist hash is good we can achieve O(n), otherwise, O(n^2)
