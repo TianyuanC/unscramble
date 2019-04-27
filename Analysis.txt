@@ -11,11 +11,13 @@ O(n)
 Similar to the scenario above, we need to go through each call once
 
 Task3: 
-O(n) 
-In order to generate the final result, we need to go through each call once
+Part A: O(nlogn) Part B: O(n)
+For part A, in order to generate the final sorted result, we need to go through each call once O(n)
+and then in the worst case if all the area codes need to be sorted, then we need O(nlogn) to perform the sort.
+In terms of part B, we need to loop all the calls once, which is O(n)
 
 Task4: 
-Worst case O(n^2) if the dict hash algorithm is implemented horribly... 
-first of all we need to loop through each item to build the whitelist,
+O(nlogn)
+first of all we need to loop through each item to build the whitelist O(n),
 and then again, we need to go through each outgoing calls to check if they start with 140 or not in the whitelist.
-If the whitelist hash is good we can achieve O(n), otherwise, O(n^2)
+And then sorting of the telemarketers will generate O(nlogn) overall

@@ -57,17 +57,18 @@ def get_code(call):
         return None
 
 
-codes = {}
+codes = set()
 print("The numbers called by people in Bangalore have codes:")
 for call in calls:
     incoming_call = call[0]
     if incoming_call.startswith("(080)"):
         answering_call = call[1]
         code = get_code(answering_call)
-        if code is not None and code not in codes:
-            print(code)
-            codes[code] = 0
+        if code is not None:
+            codes.add(code)
 
+for entry in sorted(codes):
+    print(entry)
 
 calls_from_bangalore_count = 0
 calls_to_bangalore_count = 0

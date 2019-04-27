@@ -1,3 +1,4 @@
+from collections import defaultdict
 """
 Read file into texts and calls.
 It's ok if you don't understand how to read files
@@ -25,13 +26,10 @@ class Records:
     def __init__(self):
         self.curr_highest_num = None
         self.curr_highest_time = 0
-        self.records = {}
+        self.records = defaultdict(int)
 
     def add_record(self, phone_num, time):
-        if phone_num not in self.records:
-            self.records[phone_num] = time
-        else:
-            self.records[phone_num] += time
+        self.records[phone_num] += time
 
         if self.records[phone_num] > self.curr_highest_time:
             self.curr_highest_time = self.records[phone_num]
